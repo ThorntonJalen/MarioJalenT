@@ -11,14 +11,8 @@ game.PlayerEntity = me.Entity.extend({
                     return (new me.Rect(0, 0, 128, 128)).toPolygon();
                 }
             }]);
-        settings.image = "mario";
-        settings.spritwidth = "128";
-        settings.spriteheight = "128";
-        settings.width = 128;
-        settings.height = 128;
-        this._super(me.Entity, 'init', [x, y, settings]);
         
-        this.body.setVelocity(5, 0);
+        this.body.setVelocity(5, 20);
     },
     
     update:function(delta){
