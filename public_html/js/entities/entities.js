@@ -23,6 +23,7 @@ game.PlayerEntity = me.Entity.extend({
     update:function(delta){
         if(me.input.isKeyPressed("right")){
             this.body.vel.x += this.body.accel.x * me.timer.tick;
+            this.renderable.setCurrentAnimation("smallWalk");
         }else{
             this.body.vel.x = 0;
         }
