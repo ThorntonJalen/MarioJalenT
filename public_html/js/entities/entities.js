@@ -24,7 +24,10 @@ game.PlayerEntity = me.Entity.extend({
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             this.renderable.setCurrentAnimation("smallWalk");
 
-        } else {
+        }else if(me.input.isKeyPressed("right")){
+             this.body.vel.x += this.body.accel.x * me.timer.tick;    
+        
+        }else {
             this.body.vel.x = 0;
         }
 
@@ -42,4 +45,20 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     }
 
+});
+
+
+game.LevelTrigger = me.Entity.extend({
+   init: function(x, y, settings){
+       this._super(me.Entity, 'init', [x, y, settings]);
+       this.body.onCollision = this.onCollision.bind(this);
+       this.level = settings.level;
+       
+   },
+     
+    onCollisionMask: function() {
+        this.body.setCollisionMask[me.collision.types.NO_OBJECTS];
+        me.levelDirector.load(this.level);
+    }
+    
 });
