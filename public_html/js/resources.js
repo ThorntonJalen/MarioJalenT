@@ -4,7 +4,7 @@ game.resources = [
          * @example
          * {name: "example", type:"image", src: "data/img/example.png"},
          */
-{name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
+        {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
         {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
         {name: "mario", type:"image", src: "data/img/player1.png"},
 
@@ -19,7 +19,9 @@ game.resources = [
  * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  */
 
-{name: "MarioJalenT1", type: "tmx", src: "data/map/MarioJalenT1.tmx"}
+ {name: "MarioJalenT1", type: "tmx", src: "data/map/MarioJalenT1.tmx"},
+ {name: "MarioJalenT02", type: "tmx", src: "data/map/MarioJalenT02.tmx"}
+ 
 
 /* Background music. 
  * @example
