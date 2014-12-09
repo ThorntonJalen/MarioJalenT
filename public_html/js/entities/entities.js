@@ -16,7 +16,11 @@ game.PlayerEntity = me.Entity.extend({
         this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13, 80]);
 
         this.renderable.setCurrentAnimation("idle");
-
+        
+        
+        
+        
+          //this helps put my guy on the floor 
         this.body.setVelocity(5, 20);
     },
     update: function(delta) {
@@ -24,12 +28,20 @@ game.PlayerEntity = me.Entity.extend({
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             this.renderable.setCurrentAnimation("smallWalk");
 
-        }else if(me.input.isKeyPressed("right")){
-             this.body.vel.x += this.body.accel.x * me.timer.tick;    
-        
+        }else if(me.input.isKeyPressed("left")){
+             this.body.vel.x -= this.body.accel.x / me.timer.tick;   
+                     
         }else {
             this.body.vel.x = 0;
         }
+        
+        if(me.input.isKeyPressed("up")) {
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+        
+        }
+        
+        this.body.update(delta);
+        me.collision.check(this, true.collideHandler.bind(this),true);
 
         if (this.body.vel.x !== 0) {
             if(!this.renderable.isCurrentAnimation("smallWalk")) {
@@ -56,7 +68,7 @@ game.LevelTrigger = me.Entity.extend({
        
    },
      
-    onCollisionMask: function() {
+    onCollision: function() {
         this.body.setCollisionMask[me.collision.types.NO_OBJECTS];
         me.levelDirector.load(this.level);
     }
